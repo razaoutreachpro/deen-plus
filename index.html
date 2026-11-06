@@ -1,1 +1,253 @@
 
+<!DOCTYPE html>
+<html lang="en" id="htmlTag">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deen Plus Official</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f2f2ef;color:#111}
+a{cursor:pointer;text-decoration:none;color:inherit}
+button{cursor:pointer;border:none}
+.top{max-width:1280px;margin:14px auto 0;background:#fff;border-radius:18px;padding:12px 18px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 20px rgba(0,0,0,.06);position:sticky;top:10px;z-index:50;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-img{width:58px;height:58px;border-radius:50%;background:#0b3d2e;color:#d4af37;display:flex;align-items:center;justify-content:center;font-weight:900;text-align:center;font-size:12px;line-height:1.1;border:3px solid #d4af37;flex-shrink:0}
+.logo b{font-size:26px;line-height:1;color:#0b3d2e}
+.search{flex:1;display:flex;align-items:center;background:#fff;border:1.5px solid #ddd;border-radius:999px;padding:10px 16px;gap:8px;min-width:140px}
+.search input{border:none;outline:none;flex:1;font-size:15px;width:100%}
+.top-btns{display:flex;gap:8px;align-items:center;margin-left:auto;flex-wrap:wrap}
+.lang-wrap{position:relative}
+.lang-btn{padding:10px 14px;border:1.5px solid #0b3d2e;background:#fff;color:#0b3d2e;border-radius:999px;font-weight:800;font-size:14px}
+.lang-menu{display:none;position:absolute;right:0;top:45px;background:#fff;border:1px solid #ddd;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.15);width:200px;max-height:320px;overflow-y:auto;z-index:99}
+.lang-menu.open{display:block}
+.lang-menu button{display:block;width:100%;text-align:left;padding:11px 14px;background:#fff;font-size:14px;font-weight:700;border-bottom:1px solid #eee}
+.lang-menu button:hover{background:#f0f7f2}
+.lang-menu button.active{background:#0b3d2e;color:#fff}
+.btn-outline{padding:10px 16px;border:1.5px solid #0b3d2e;color:#0b3d2e;background:#fff;border-radius:999px;font-weight:700;white-space:nowrap}
+.btn-green{padding:10px 16px;background:#0b6a3a;color:#fff;border-radius:999px;font-weight:700;white-space:nowrap}
+.avatar{width:44px;height:44px;border-radius:50%;overflow:hidden;background:#eee;border:2px solid #0b3d2e;flex-shrink:0}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.wrap{max-width:1280px;margin:16px auto;padding:0 8px}
+.cats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.cat{padding:9px 16px;background:#fff;border:1px solid #ddd;border-radius:999px;font-size:14px;font-weight:600;white-space:nowrap}
+.cat.active{background:#0b6a3a;color:#fff;border-color:#0b6a3a}
+.main{display:grid;grid-template-columns:1fr 330px;gap:20px;align-items:start}
+.hero-row{display:grid;grid-template-columns:1.55fr 1fr;gap:16px}
+.hero{border-radius:16px;overflow:hidden;background:#000;color:#fff;position:relative;min-height:340px;display:flex;align-items:flex-end;cursor:pointer}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.75)),url('https://images.unsplash.com/photo-1564769625905-50e93615e769?w=1200') center/cover}
+.hero-content{position:relative;padding:20px;width:100%}
+.hero-content h2{color:#fff!important;margin:10px 0 5px!important;line-height:1.3}
+.live-badge{background:#e11d48;padding:5px 10px;border-radius:6px;font-size:13px;font-weight:800;display:inline-block}
+.play{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:70px;height:70px;border-radius:50%;background:#0b3d2e;border:3px solid #fff;display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff;z-index:2}
+.right-col{display:flex;flex-direction:column;gap:16px}
+.card{background:#fff;border-radius:14px;overflow:hidden;cursor:pointer}
+.card img{width:100%;height:150px;object-fit:cover;display:block}
+.card-body{padding:12px}
+.card-body h4{font-size:14px;line-height:1.4}
+.card-body p{font-size:12px;color:#666;margin-top:6px}
+.badge-time{position:absolute;background:rgba(0,0,0,.8);color:#fff;font-size:12px;padding:3px 6px;border-radius:6px;right:8px;bottom:8px}
+.thumb{position:relative}
+h2{font-size:20px;margin:22px 0 6px;color:#0b3d2e}
+h3{font-size:17px;margin:18px 0 12px}
+.side{background:#fff;border-radius:16px;padding:16px;border:1px solid #eee}
+.side h3{margin:0 0 14px}
+.channel{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.channel img{width:42px;height:42px;border-radius:50%;object-fit:cover}
+.channel div{flex:1}
+.sub{padding:6px 12px;border:1px solid #0b3d2e;border-radius:999px;background:#fff;font-size:13px;white-space:nowrap}
+.sub.done{background:#0b3d2e;color:#fff}
+.lib-item{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #eee;font-size:14px}
+.lib-item span:last-child{background:#d4af37;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:800}
+.noti{font-size:13px;padding:10px 0;border-bottom:1px solid #eee}
+.trend-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+footer{max-width:1280px;margin:20px auto;background:#0b3d2e;color:#fff;border-radius:18px;padding:28px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:20px}
+footer h4{margin-bottom:12px}
+footer p,footer a{display:block;color:#d8e8de;font-size:14px;margin-bottom:8px}
+.copy{text-align:center;color:#d4af37;font-size:13px;margin-top:18px;grid-column:1/-1}
+.contact-box{background:#fff;border-radius:14px;padding:16px;margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.contact-box a{padding:10px 16px;border-radius:999px;font-weight:700;font-size:14px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:100;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.modal-box{background:#fff;width:100%;max-width:900px;border-radius:16px;overflow:hidden;max-height:90vh;overflow:auto}
+.modal-box video{width:100%;background:#000}
+.modal-pad{padding:18px}
+.close{float:right;background:#111;color:#fff;padding:8px 14px;border-radius:999px}
+.page{display:none;position:fixed;inset:0;background:#fff;z-index:101;overflow:auto;padding:30px;max-width:800px;margin:auto}
+.page.open{display:block}
+@media(max-width:900px){.top{margin:10px 10px 0}.main{grid-template-columns:1fr}.hero-row{grid-template-columns:1fr}.hero{min-height:300px}.cats{flex-wrap:nowrap;overflow-x:auto}.cats::-webkit-scrollbar{display:none}footer{grid-template-columns:1fr 1fr;margin:16px 10px}.wrap{padding:0 10px}}
+@media(max-width:520px){.trend-grid{grid-template-columns:1fr}.logo b{font-size:22px}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="logo"><div class="logo-img">Deen<br>Plus</div><b>Deen Plus<br>Official</b></div>
+  <label class="search">🔍 <input id="searchInput" data-i18n-ph="search" placeholder="Search Bayan, Naat, Quran..." oninput="doSearch(this.value)"></label>
+  <div class="top-btns">
+    <div class="lang-wrap">
+      <button class="lang-btn" id="langBtn" onclick="toggleLang()">🌐 English ▼</button>
+      <div class="lang-menu" id="langMenu">
+        <button onclick="setLang('en')" id="btn-en" class="active">🇬🇧 English</button>
+        <button onclick="setLang('ur')" id="btn-ur">🇵🇰 اردو - Urdu</button>
+        <button onclick="setLang('hi')" id="btn-hi">🇮🇳 हिंदी - Hindi</button>
+        <button onclick="setLang('bn')" id="btn-bn">🇧🇩 বাংলা - Bengali</button>
+        <button onclick="setLang('ar')" id="btn-ar">🇸🇦 العربية - Arabic</button>
+        <button onclick="setLang('fa')" id="btn-fa">🇮🇷 فارسی - Farsi</button>
+        <button onclick="setLang('tr')" id="btn-tr">🇹🇷 Türkçe - Turkish</button>
+        <button onclick="setLang('id')" id="btn-id">🇮🇩 Bahasa Indonesia</button>
+        <button onclick="setLang('ms')" id="btn-ms">🇲🇾 Bahasa Melayu</button>
+        <button onclick="setLang('fr')" id="btn-fr">🇫🇷 Français - French</button>
+        <button onclick="setLang('es')" id="btn-es">🇪🇸 Español - Spanish</button>
+        <button onclick="setLang('de')" id="btn-de">🇩🇪 Deutsch - German</button>
+        <button onclick="setLang('it')" id="btn-it">🇮🇹 Italiano</button>
+        <button onclick="setLang('pt')" id="btn-pt">🇵🇹 Português</button>
+        <button onclick="setLang('ru')" id="btn-ru">🇷🇺 Русский - Russian</button>
+        <button onclick="setLang('zh')" id="btn-zh">🇨🇳 中文 - Chinese</button>
+        <button onclick="setLang('ja')" id="btn-ja">🇯🇵 日本語 - Japanese</button>
+        <button onclick="setLang('ko')" id="btn-ko">🇰🇷 한국어 - Korean</button>
+        <button onclick="setLang('pa')" id="btn-pa">🇵🇰 ਪੰਜਾਬੀ - Punjabi</button>
+        <button onclick="setLang('ps')" id="btn-ps">🇦🇫 پشتو - Pashto</button>
+      </div>
+    </div>
+    <button class="btn-outline" data-i18n="signin" onclick="openPage('signin')">Sign In</button>
+    <button class="btn-green" data-i18n="upload" onclick="openPage('upload')">⬆ Upload</button>
+    <div class="avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200"></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="cats">
+    <a class="cat active" data-i18n="all" onclick="filterCat(this,'All')">All</a>
+    <a class="cat" data-i18n="seerat" onclick="filterCat(this,'Seerat')">Seerat e Mustafa</a>
+    <a class="cat" data-i18n="quran" onclick="filterCat(this,'Quran')">Quran Recitation</a>
+    <a class="cat" data-i18n="naat" onclick="filterCat(this,'Naat')">Naat</a>
+    <a class="cat" data-i18n="bayan" onclick="filterCat(this,'Bayan')">Islami Bayan</a>
+    <a class="cat" data-i18n="waqiat" onclick="filterCat(this,'Waqiat')">Waqiat</a>
+    <a class="cat" data-i18n="mp3" onclick="filterCat(this,'MP3')">Quran MP3</a>
+    <a class="cat" data-i18n="kids" onclick="filterCat(this,'Kids')">Kids Islami</a>
+    <a class="cat" data-i18n="makkah" onclick="filterCat(this,'Live')">Makkah Live ●</a>
+    <a class="cat" data-i18n="madina" onclick="filterCat(this,'Live')">Madina Live ●</a>
+  </div>
+  <div class="main">
+    <div>
+      <div class="hero-row">
+        <div class="hero" onclick="playVideo('Seerat e Mustafa (SAW) - Full Series','Episode 1 • 2.1M views')">
+          <div class="hero-bg"></div><div class="play">▶</div>
+          <div class="hero-content"><span class="live-badge">LIVE • Makkah Live</span><h2 data-i18n="heroTitle">Seerat e Mustafa (SAW) - Full Series</h2><p data-i18n="heroMeta">Episode 1 • 2.1M views • Streamed live • 3 days ago</p></div>
+        </div>
+        <div class="right-col">
+          <div class="card video-item" data-title="The Mercy of Prophet Muhammad (SAW)" onclick="playVideo('The Mercy of Prophet Muhammad (SAW)','Al-Huda Institute • 512K views')">
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=600"><span class="badge-time">42:13</span></div>
+            <div class="card-body"><h4 data-i18n="v1">The Mercy of Prophet Muhammad (SAW) | Islami Bayan</h4><p>Al-Huda Institute ✓<br>512K views • 1 week ago</p></div>
+          </div>
+          <div class="card video-item" data-title="Surah Al-Mulk" onclick="playVideo('Surah Al-Mulk | Beautiful Quran Recitation','Quran Recitation Hub • 387K views')">
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1585036156171-384164a8c675?w=600"><span class="badge-time">18:05</span></div>
+            <div class="card-body"><h4 data-i18n="v2">Surah Al-Mulk | Beautiful Quran Recitation</h4><p>Quran Recitation Hub ✓<br>387K views • 5 days ago</p></div>
+          </div>
+        </div>
+      </div>
+      <h2><span data-i18n="trending">Trending Now 🔥</span><br><span data-i18n="v2">Surah Al-Mulk | Beautiful Quran Recitation</span></h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div><div class="trend-grid">
+          <div class="card video-item" data-title="Prophet Adam Story for Kids" onclick="playVideo('Prophet Adam (AS) Story for Kids','Little Believers • 203K views')"><div class="thumb"><img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=600"><span class="badge-time">12:34</span></div><div class="card-body"><h4 data-i18n="v3">Prophet Adam (AS) Story for Kids | Kids Islami</h4><p>Little Believers • 203K views</p></div></div>
+          <div class="card video-item" data-title="Naat Ya Nabi Salam Alayka" onclick="playVideo('Naat - Ya Nabi Salam Alayka','Noor Naats • 429K views')"><div class="thumb"><img src="https://images.unsplash.com/photo-1519817650390-64a93db51149?w=600"><span class="badge-time">06:22</span></div><div class="card-body"><h4 data-i18n="v4">Naat - Ya Nabi Salam Alayka | Heartfelt Naat</h4><p>Noor Naats • 429K views</p></div></div>
+        </div></div>
+        <div><h3 style="margin-top:0" data-i18n="foryou">✨ For You / Recommended</h3><div class="trend-grid">
+          <div class="card" onclick="playVideo('The Story of Makkah','Islamic History Corner')"><div class="thumb"><img src="https://images.unsplash.com/photo-1579308444876-1a8dc2b2e8e1?w=600"><span class="badge-time">25:10</span></div><div class="card-body"><h4 data-i18n="v5">The Story of Makkah | Historical Waqiat</h4><p>Islamic History Corner<br>178K views</p></div></div>
+          <div class="card" onclick="playVideo('Tajweed Lesson 5','Daily reminders')"><div class="thumb"><img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=600"><span class="badge-time">31:45</span></div><div class="card-body"><h4 data-i18n="v6">Tajweed Lesson 5 | Learn Quran Properly</h4><p>Daily reminders<br>66K views</p></div></div>
+        </div></div>
+      </div>
+      <h3 data-i18n="playlist">Playlist - Seerat Series / 30 Days Bayan Series</h3>
+      <div class="card" style="padding:14px;display:flex;gap:12px;align-items:center" onclick="playVideo('Seerat Series - Playlist','Deen Plus Official')"><span style="font-size:30px">▶</span><div><b data-i18n="playlist2">Seerat Series - 30 Videos Playlist</b><p style="color:#666;font-size:13px" data-i18n="playlist3">Ek ke baad ek, rukegi nahi - Continue Watching</p></div><button class="btn-green" style="margin-left:auto" data-i18n="playall">Play All</button></div>
+      <div class="contact-box">
+        <b style="width:100%" data-i18n="contactTitle">📞 Hum Se Rabta Karein - Deen Plus Official</b>
+        <a href="https://wa.me/923112314531" target="_blank" style="background:#25D366;color:#fff">💬 WhatsApp: 0311-2314531</a>
+        <a href="mailto:deenplusofficial786@gmail.com" style="background:#0b3d2e;color:#fff">📧 Gmail: deenplusofficial786@gmail.com</a>
+        <a href="https://youtube.com/@deenplusofficial?si=QPkKUlSC-HSJIfHU" target="_blank" style="background:#FF0000;color:#fff">▶ YouTube: Deen Plus Channel</a>
+      </div>
+    </div>
+    <div class="side">
+      <h3 data-i18n="channels">+ Channels to Follow</h3>
+      <div class="channel"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100"><div><b>Al-Huda Institute</b><br><small>128K subscribers</small></div><button class="sub" onclick="toggleSub(this)">Subscribe</button></div>
+      <div class="channel"><img src="https://images.unsplash.com/photo-1585036156171-384164a8c675?w=100"><div><b>Quran Recitation Hub</b><br><small>95K subscribers</small></div><button class="sub" onclick="toggleSub(this)">Subscribe</button></div>
+      <div class="channel"><img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=100"><div><b>Little Believers</b><br><small>74K subscribers</small></div><button class="sub" onclick="toggleSub(this)">Subscribe</button></div>
+      <h3 style="margin-top:20px" data-i18n="library">♡ My Library</h3>
+      <div class="lib-item"><span data-i18n="watchlater">♡ Watch Later</span><span>12</span></div>
+      <div class="lib-item"><span data-i18n="liked">♡ Liked Videos</span><span>45</span></div>
+      <div class="lib-item"><span data-i18n="yourvideos">♡ Your Videos</span><span>3</span></div>
+      <h3 style="margin-top:20px" data-i18n="noti">🔔 Notifications</h3>
+      <div class="noti"><b data-i18n="noti1">New: Seerat e Mustafa Ep.2 is now live</b><br><small>10m ago</small></div>
+      <div class="noti"><b data-i18n="noti2">Al-Huda Institute uploaded a new bayan</b><br><small>2h ago</small></div>
+    </div>
+  </div>
+</div>
+<footer>
+  <div><h4>🕌 Deen Plus Official</h4><p data-i18n="footerDesc">A trusted platform for Islamic educational videos.</p><p data-i18n="tagline">Deen Ki Baat, Dil Tak</p><p style="margin-top:12px">📞 <a href="https://wa.me/923112314531" target="_blank" style="display:inline;color:#fff;text-decoration:underline">0311-2314531 - WhatsApp</a><br>📧 <a href="mailto:deenplusofficial786@gmail.com" style="display:inline;color:#fff;text-decoration:underline">deenplusofficial786@gmail.com</a><br>▶ <a href="https://youtube.com/@deenplusofficial?si=QPkKUlSC-HSJIfHU" target="_blank" style="display:inline;color:#fff;text-decoration:underline">YouTube Channel - Deen Plus</a></p></div>
+  <div><h4 data-i18n="company">Company</h4><a onclick="openPage('about')" data-i18n="about">About</a><a onclick="openPage('about')" data-i18n="careers">Careers</a><a onclick="openPage('about')" data-i18n="press">Press</a></div>
+  <div><h4 data-i18n="legal">Legal</h4><a onclick="openPage('privacy')" data-i18n="privacy">Privacy Policy</a><a onclick="openPage('terms')" data-i18n="terms">Terms & Conditions</a><a onclick="openPage('terms')" data-i18n="copyright">Copyright</a></div>
+  <div><h4 data-i18n="support">Support</h4><a onclick="openPage('contact')" data-i18n="contact">Contact</a><a onclick="openPage('contact')" data-i18n="feedback">Feedback</a><a href="https://wa.me/923112314531" target="_blank">WhatsApp Support</a></div>
+  <div class="copy">© 2024 Deen Plus Official. All rights reserved. | Contact: deenplusofficial786@gmail.com | WhatsApp: 0311-2314531</div>
+</footer>
+<div class="modal" id="videoModal"><div class="modal-box"><video controls autoplay src="https://www.w3schools.com/html/mov_bbb.mp4"></video><div class="modal-pad"><button class="close" onclick="closeVideo()">X Close</button><h3 id="vTitle">Video</h3><p id="vMeta"></p><div style="display:flex;gap:10px;margin:12px 0"><button class="btn-green" onclick="like(this)">❤️ Like</button><button class="btn-outline" onclick="alert('Link Copied!')">Share</button><button class="btn-outline" onclick="alert('Saved to Watch Later')">Save</button></div><h4>Comments</h4><input id="cInput" placeholder="Write a comment..." style="width:100%;padding:10px;border:1px solid #ddd;border-radius:10px;margin:8px 0"><button class="btn-green" onclick="addComment()">Post Comment</button><div id="comments" style="margin-top:10px"></div></div></div></div>
+<div class="page" id="pageBox"><button class="close" onclick="closePage()">X Close</button><div id="pageContent"></div></div>
+<script>
+const translations = {
+en:{search:"Search Bayan, Naat, Quran...",signin:"Sign In",upload:"⬆ Upload",all:"All",seerat:"Seerat e Mustafa",quran:"Quran Recitation",naat:"Naat",bayan:"Islami Bayan",waqiat:"Waqiat",mp3:"Quran MP3",kids:"Kids Islami",makkah:"Makkah Live ●",madina:"Madina Live ●",heroTitle:"Seerat e Mustafa (SAW) - Full Series",heroMeta:"Episode 1 • 2.1M views • Streamed live • 3 days ago",v1:"The Mercy of Prophet Muhammad (SAW) | Islami Bayan",v2:"Surah Al-Mulk | Beautiful Quran Recitation",v3:"Prophet Adam (AS) Story for Kids | Kids Islami",v4:"Naat - Ya Nabi Salam Alayka | Heartfelt Naat",v5:"The Story of Makkah | Historical Waqiat",v6:"Tajweed Lesson 5 | Learn Quran Properly",trending:"Trending Now 🔥",foryou:"✨ For You / Recommended",playlist:"Playlist - Seerat Series / 30 Days Bayan Series",playlist2:"Seerat Series - 30 Videos Playlist",playlist3:"Ek ke baad ek, rukegi nahi - Continue Watching",playall:"Play All",contactTitle:"📞 Hum Se Rabta Karein - Deen Plus Official",channels:"+ Channels to Follow",library:"♡ My Library",watchlater:"♡ Watch Later",liked:"♡ Liked Videos",yourvideos:"♡ Your Videos",noti:"🔔 Notifications",noti1:"New: Seerat e Mustafa Ep.2 is now live",noti2:"Al-Huda Institute uploaded a new bayan",footerDesc:"A trusted platform for Islamic educational videos.",tagline:"Deen Ki Baat, Dil Tak",company:"Company",about:"About",careers:"Careers",press:"Press",legal:"Legal",privacy:"Privacy Policy",terms:"Terms & Conditions",copyright:"Copyright",support:"Support",contact:"Contact",feedback:"Feedback"},
+ur:{search:"بیان، نعت، قرآن تلاش کریں...",signin:"سائن ان",upload:"⬆ اپ لوڈ",all:"سب",seerat:"سیرت مصطفیٰ",quran:"تلاوت قرآن",naat:"نعت",bayan:"اسلامی بیان",waqiat:"واقعات",mp3:"قرآن ایم پی 3",kids:"بچوں کا اسلامی",makkah:"مکہ لائیو ●",madina:"مدینہ لائیو ●",heroTitle:"سیرت مصطفیٰ ﷺ - مکمل سیریز",heroMeta:"قسط 1 • 2.1M ویوز • لائیو • 3 دن پہلے",v1:"حضور ﷺ کی رحمت | اسلامی بیان",v2:"سورہ الملک | خوبصورت تلاوت قرآن",v3:"حضرت آدم علیہ السلام کی کہانی | بچوں کا اسلامی",v4:"نعت - یا نبی سلام علیک | دل کو چھو لینے والی نعت",v5:"مکہ کی کہانی | تاریخی واقعات",v6:"تجوید سبق 5 | قرآن صحیح سیکھیں",trending:"ٹرینڈنگ ابھی 🔥",foryou:"✨ آپ کے لیے / تجویز کردہ",playlist:"پلے لسٹ - سیرت سیریز / 30 دن بیان سیریز",playlist2:"سیرت سیریز - 30 ویڈیوز پلے لسٹ",playlist3:"ایک کے بعد ایک، رکے گی نہیں - دیکھتے رہیں",playall:"سب چلائیں",contactTitle:"📞 ہم سے رابطہ کریں - دین پلس آفیشل",channels:"+ فالو کرنے والے چینلز",library:"♡ میری لائبریری",watchlater:"♡ بعد میں دیکھیں",liked:"♡ پسندیدہ ویڈیوز",yourvideos:"♡ آپ کی ویڈیوز",noti:"🔔 نوٹیفکیشن",noti1:"نیا: سیرت مصطفیٰ قسط 2 اب لائیو ہے",noti2:"الحُدیٰ انسٹیٹیوٹ نے نیا بیان اپ لوڈ کیا",footerDesc:"اسلامی تعلیمی ویڈیوز کا قابل اعتماد پلیٹ فارم۔",tagline:"دین کی بات، دل تک",company:"کمپنی",about:"ہمارے بارے میں",careers:"نوکریاں",press:"پریس",legal:"قانونی",privacy:"پرائیویسی پالیسی",terms:"شرائط و ضوابط",copyright:"کاپی رائٹ",support:"مدد",contact:"رابطہ",feedback:"رائے"},
+hi:{search:"बयान, नात, कुरान खोजें...",signin:"साइन इन",upload:"⬆ अपलोड",all:"सभी",seerat:"सीरत मुस्तफा",quran:"कुरान तिलावत",naat:"नात",bayan:"इस्लामी बयान",waqiat:"वाकियात",mp3:"कुरान MP3",kids:"बच्चों का इस्लामी",makkah:"मक्का लाइव ●",madina:"मदीना लाइव ●",heroTitle:"सीरत मुस्तफा (SAW) - पूरी सीरीज़",heroMeta:"एपिसोड 1 • 2.1M व्यूज • लाइव • 3 दिन पहले",v1:"पैगंबर मुहम्मद (SAW) की रहमत | इस्लामी बयान",v2:"सूरह अल-मुल्क | सुंदर कुरान तिलावत",v3:"हज़रत आदम की कहानी बच्चों के लिए",v4:"नात - या नबी सलाम अलैका",v5:"मक्का की कहानी | ऐतिहासिक वाकियात",v6:"तजवीद पाठ 5 | कुरान सही सीखें",trending:"ट्रेंडिंग अभी 🔥",foryou:"✨ आपके लिए / सुझाव",playlist:"प्लेलिस्ट - सीरत सीरीज़",playlist2:"सीरत सीरीज़ - 30 वीडियो प्लेलिस्ट",playlist3:"एक के बाद एक, रुकेगी नहीं",playall:"सभी चलाएं",contactTitle:"📞 हमसे संपर्क करें - दीन प्लस ऑफिशियल",channels:"+ फॉलो करने वाले चैनल",library:"♡ मेरी लाइब्रेरी",watchlater:"♡ बाद में देखें",liked:"♡ पसंदीदा वीडियो",yourvideos:"♡ आपके वीडियो",noti:"🔔 सूचनाएं",noti1:"नया: सीरत मुस्तफा Ep.2 अब लाइव है",noti2:"अल-हुदा ने नया बयान अपलोड किया",footerDesc:"इस्लामी शैक्षिक वीडियो का विश्वसनीय मंच।",tagline:"दीन की बात, दिल तक",company:"कंपनी",about:"हमारे बारे में",careers:"नौकरियां",press:"प्रेस",legal:"कानूनी",privacy:"गोपनीयता नीति",terms:"नियम और शर्तें",copyright:"कॉपीराइट",support:"सहायता",contact:"संपर्क",feedback:"प्रतिक्रिया"},
+bn:{search:"বয়ান, নাত, কুরআন খুঁজুন...",signin:"সাইন ইন",upload:"⬆ আপলোড",all:"সব",seerat:"সিরাত মুস্তফা",quran:"কুরআন তিলাওয়াত",naat:"নাত",bayan:"ইসলামী বয়ান",waqiat:"ওয়াকিয়াত",mp3:"কুরআন MP3",kids:"শিশু ইসলামী",makkah:"মক্কা লাইভ ●",madina:"মদিনা লাইভ ●",heroTitle:"সিরাত মুস্তফা (SAW) - সম্পূর্ণ সিরিজ",heroMeta:"পর্ব 1 • 2.1M ভিউ • লাইভ • 3 দিন আগে",v1:"নবী মুহাম্মদ (SAW) এর দয়া | ইসলামী বয়ান",v2:"সূরা আল-মুলক | সুন্দর কুরআন তিলাওয়াত",v3:"হযরত আদমের গল্প শিশুদের জন্য",v4:"নাত - ইয়া নবী সালাম আলাইকা",v5:"মক্কার গল্প | ঐতিহাসিক ওয়াকিয়াত",v6:"তাজবীদ পাঠ 5 | কুরআন সঠিকভাবে শিখুন",trending:"ট্রেন্ডিং এখন 🔥",foryou:"✨ আপনার জন্য / প্রস্তাবিত",playlist:"প্লেলিস্ট - সিরাত সিরিজ",playlist2:"সিরাত সিরিজ - 30 ভিডিও প্লেলিস্ট",playlist3:"একটার পর একটা, থামবে না",playall:"সব চালান",contactTitle:"📞 আমাদের সাথে যোগাযোগ করুন - দ্বীন প্লাস অফিশিয়াল",channels:"+ ফলো করার চ্যানেল",library:"♡ আমার লাইব্রেরি",watchlater:"♡ পরে দেখুন",liked:"♡ পছন্দের ভিডিও",yourvideos:"♡ আপনার ভিডিও",noti:"🔔 বিজ্ঞপ্তি",noti1:"নতুন: সিরাত মুস্তফা Ep.2 এখন লাইভ",noti2:"আল-হুদা নতুন বয়ান আপলোড করেছে",footerDesc:"ইসলামী শিক্ষামূলক ভিডিওর বিশ্বস্ত প্ল্যাটফর্ম।",tagline:"দ্বীনের কথা, দিল পর্যন্ত",company:"কোম্পানি",about:"আমাদের সম্পর্কে",careers:"চাকরি",press:"প্রেস",legal:"আইনি",privacy:"গোপনীয়তা নীতি",terms:"শর্তাবলী",copyright:"কপিরাইট",support:"সহায়তা",contact:"যোগাযোগ",feedback:"মতামত"},
+ar:{search:"ابحث عن بيان، نعت، قرآن...",signin:"تسجيل الدخول",upload:"⬆ رفع",all:"الكل",seerat:"سيرة المصطفى",quran:"تلاوة القرآن",naat:"نعت",bayan:"بيان إسلامي",waqiat:"وقائع",mp3:"قرآن MP3",kids:"إسلامي للأطفال",makkah:"مكة مباشر ●",madina:"المدينة مباشر ●",heroTitle:"سيرة المصطفى ﷺ - السلسلة الكاملة",heroMeta:"الحلقة 1 • 2.1M مشاهدة • مباشر • قبل 3 أيام",v1:"رحمة النبي محمد ﷺ | بيان إسلامي",v2:"سورة الملك | تلاوة جميلة",v3:"قصة النبي آدم للأطفال",v4:"نعت - يا نبي سلام عليك",v5:"قصة مكة | وقائع تاريخية",v6:"درس التجويد 5 | تعلم القرآن",trending:"شائع الآن 🔥",foryou:"✨ لك / موصى به",playlist:"قائمة التشغيل - سلسلة السيرة",playlist2:"سلسلة السيرة - 30 فيديو",playlist3:"واحد بعد الآخر، لن تتوقف",playall:"تشغيل الكل",contactTitle:"📞 تواصل معنا - دين بلس الرسمي",channels:"+ قنوات للمتابعة",library:"♡ مكتبتي",watchlater:"♡ مشاهدة لاحقا",liked:"♡ مقاطع أعجبتك",yourvideos:"♡ فيديوهاتك",noti:"🔔 الإشعارات",noti1:"جديد: سيرة المصطفى الحلقة 2 مباشر الآن",noti2:"معهد الهدى رفع بيانا جديدا",footerDesc:"منصة موثوقة للفيديوهات التعليمية الإسلامية.",tagline:"كلام الدين، إلى القلب",company:"الشركة",about:"من نحن",careers:"وظائف",press:"صحافة",legal:"قانوني",privacy:"سياسة الخصوصية",terms:"الشروط والأحكام",copyright:"حقوق النشر",support:"الدعم",contact:"اتصل",feedback:"ملاحظات"},
+fa:{search:"جستجوی بیان، نعت، قرآن...",signin:"ورود",upload:"⬆ آپلود",all:"همه",seerat:"سیرت مصطفی",quran:"تلاوت قرآن",naat:"نعت",bayan:"بیان اسلامی",waqiat:"وقایع",mp3:"قرآن MP3",kids:"اسلامی کودکان",makkah:"مکه زنده ●",madina:"مدینه زنده ●",heroTitle:"سیرت مصطفی ﷺ - سری کامل",heroMeta:"قسمت 1 • 2.1M بازدید • زنده • 3 روز پیش",v1:"رحمت پیامبر محمد ﷺ | بیان اسلامی",v2:"سوره ملک | تلاوت زیبای قرآن",v3:"داستان حضرت آدم برای کودکان",v4:"نعت - یا نبی سلام علیک",v5:"داستان مکه | وقایع تاریخی",v6:"درس تجوید 5 | قرآن را درست بیاموزید",trending:"ترند اکنون 🔥",foryou:"✨ برای شما / پیشنهادی",playlist:"لیست پخش - سری سیرت",playlist2:"سری سیرت - 30 ویدیو",playlist3:"یکی بعد از دیگری، متوقف نمی شود",playall:"پخش همه",contactTitle:"📞 با ما تماس بگیرید - دین پلاس رسمی",channels:"+ کانال ها برای دنبال کردن",library:"♡ کتابخانه من",watchlater:"♡ بعدا تماشا کن",liked:"♡ ویدیوهای پسندیده",yourvideos:"♡ ویدیوهای شما",noti:"🔔 اعلان ها",noti1:"جدید: سیرت مصطفی قسمت 2 اکنون زنده است",noti2:"موسسه الهدی بیان جدید آپلود کرد",footerDesc:"پلتفرم قابل اعتماد برای ویدیوهای آموزشی اسلامی.",tagline:"سخن دین، تا دل",company:"شرکت",about:"درباره ما",careers:"مشاغل",press:"مطبوعات",legal:"قانونی",privacy:"سیاست حریم خصوصی",terms:"شرایط و ضوابط",copyright:"کپی رایت",support:"پشتیبانی",contact:"تماس",feedback:"بازخورد"},
+tr:{search:"Beyan, Naat, Kur'an Ara...",signin:"Giriş Yap",upload:"⬆ Yükle",all:"Tümü",seerat:"Sireti Mustafa",quran:"Kur'an Tilaveti",naat:"Naat",bayan:"İslami Beyan",waqiat:"Vakalar",mp3:"Kur'an MP3",kids:"Çocuk İslami",makkah:"Mekke Canlı ●",madina:"Medine Canlı ●",heroTitle:"Sireti Mustafa (SAW) - Tam Seri",heroMeta:"Bölüm 1 • 2.1M görüntüleme • Canlı • 3 gün önce",v1:"Hz. Muhammed'in Merhameti | İslami Beyan",v2:"Mülk Suresi | Güzel Kur'an Tilaveti",v3:"Hz. Adem Hikayesi Çocuklar İçin",v4:"Naat - Ya Nebi Selam Aleyke",v5:"Mekke'nin Hikayesi | Tarihi Vakalar",v6:"Tecvid Dersi 5 | Kur'an'ı Doğru Öğren",trending:"Şimdi Trend 🔥",foryou:"✨ Sizin İçin / Önerilen",playlist:"Oynatma Listesi - Siret Serisi",playlist2:"Siret Serisi - 30 Video",playlist3:"Biri bitince diğeri, durmayacak",playall:"Tümünü Oynat",contactTitle:"📞 Bizimle İletişim - Deen Plus Resmi",channels:"+ Takip Edilecek Kanallar",library:"♡ Kitaplığım",watchlater:"♡ Sonra İzle",liked:"♡ Beğenilen Videolar",yourvideos:"♡ Videolarınız",noti:"🔔 Bildirimler",noti1:"Yeni: Sireti Mustafa Bölüm 2 şimdi canlı",noti2:"Al-Huda yeni beyan yükledi",footerDesc:"İslami eğitim videoları için güvenilir platform.",tagline:"Dinin Sözü, Kalbe Kadar",company:"Şirket",about:"Hakkımızda",careers:"Kariyer",press:"Basın",legal:"Yasal",privacy:"Gizlilik Politikası",terms:"Şartlar ve Koşullar",copyright:"Telif Hakkı",support:"Destek",contact:"İletişim",feedback:"Geri Bildirim"},
+id:{search:"Cari Bayan, Naat, Quran...",signin:"Masuk",upload:"⬆ Unggah",all:"Semua",seerat:"Sirah Mustafa",quran:"Tilawah Quran",naat:"Naat",bayan:"Bayan Islami",waqiat:"Kisah",mp3:"Quran MP3",kids:"Islami Anak",makkah:"Makkah Live ●",madina:"Madinah Live ●",heroTitle:"Sirah Mustafa (SAW) - Seri Lengkap",heroMeta:"Episode 1 • 2.1M tayangan • Live • 3 hari lalu",v1:"Kasih Sayang Nabi Muhammad (SAW) | Bayan Islami",v2:"Surah Al-Mulk | Tilawah Quran Indah",v3:"Kisah Nabi Adam untuk Anak",v4:"Naat - Ya Nabi Salam Alayka",v5:"Kisah Makkah | Kisah Sejarah",v6:"Pelajaran Tajwid 5 | Belajar Quran",trending:"Trending Sekarang 🔥",foryou:"✨ Untuk Anda / Direkomendasikan",playlist:"Playlist - Seri Sirah",playlist2:"Seri Sirah - 30 Video",playlist3:"Satu demi satu, tidak akan berhenti",playall:"Putar Semua",contactTitle:"📞 Hubungi Kami - Deen Plus Resmi",channels:"+ Channel untuk Diikuti",library:"♡ Perpustakaan Saya",watchlater:"♡ Tonton Nanti",liked:"♡ Video Disukai",yourvideos:"♡ Video Anda",noti:"🔔 Notifikasi",noti1:"Baru: Sirah Mustafa Ep.2 sekarang live",noti2:"Al-Huda mengunggah bayan baru",footerDesc:"Platform terpercaya untuk video pendidikan Islam.",tagline:"Kata Deen, Sampai Hati",company:"Perusahaan",about:"Tentang",careers:"Karier",press:"Pers",legal:"Hukum",privacy:"Kebijakan Privasi",terms:"Syarat & Ketentuan",copyright:"Hak Cipta",support:"Dukungan",contact:"Kontak",feedback:"Umpan Balik"},
+ms:{search:"Cari Bayan, Naat, Quran...",signin:"Log Masuk",upload:"⬆ Muat Naik",all:"Semua",seerat:"Sirah Mustafa",quran:"Tilawah Quran",naat:"Naat",bayan:"Bayan Islami",waqiat:"Waqiat",mp3:"Quran MP3",kids:"Islami Kanak-kanak",makkah:"Makkah Live ●",madina:"Madinah Live ●",heroTitle:"Sirah Mustafa (SAW) - Siri Penuh",heroMeta:"Episod 1 • 2.1M tontonan • Live • 3 hari lalu",v1:"Rahmat Nabi Muhammad (SAW) | Bayan Islami",v2:"Surah Al-Mulk | Tilawah Quran Indah",v3:"Kisah Nabi Adam untuk Kanak-kanak",v4:"Naat - Ya Nabi Salam Alayka",v5:"Kisah Makkah | Waqiat Sejarah",v6:"Pelajaran Tajwid 5 | Belajar Quran",trending:"Trending Sekarang 🔥",foryou:"✨ Untuk Anda / Disyorkan",playlist:"Senarai Main - Siri Sirah",playlist2:"Siri Sirah - 30 Video",playlist3:"Satu demi satu, tidak akan berhenti",playall:"Main Semua",contactTitle:"📞 Hubungi Kami - Deen Plus Rasmi",channels:"+ Saluran untuk Diikuti",library:"♡ Perpustakaan Saya",watchlater:"♡ Tonton Kemudian",liked:"♡ Video Disukai",yourvideos:"♡ Video Anda",noti:"🔔 Pemberitahuan",noti1:"Baharu: Sirah Mustafa Ep.2 kini live",noti2:"Al-Huda memuat naik bayan baharu",footerDesc:"Platform dipercayai untuk video pendidikan Islam.",tagline:"Kata Deen, Hingga Hati",company:"Syarikat",about:"Tentang",careers:"Kerjaya",press:"Akhbar",legal:"Undang-undang",privacy:"Dasar Privasi",terms:"Terma & Syarat",copyright:"Hak Cipta",support:"Sokongan",contact:"Hubungi",feedback:"Maklum Balas"},
+fr:{search:"Rechercher Bayan, Naat, Coran...",signin:"Se Connecter",upload:"⬆ Télécharger",all:"Tout",seerat:"Sirah Mustafa",quran:"Récitation du Coran",naat:"Naat",bayan:"Bayan Islamique",waqiat:"Récits",mp3:"Coran MP3",kids:"Islamique Enfants",makkah:"Makkah En Direct ●",madina:"Médine En Direct ●",heroTitle:"Sirah Mustafa (SAW) - Série Complète",heroMeta:"Épisode 1 • 2.1M vues • En direct • Il y a 3 jours",v1:"La Miséricorde du Prophète Muhammad (SAW)",v2:"Sourate Al-Mulk | Belle Récitation",v3:"Histoire du Prophète Adam pour Enfants",v4:"Naat - Ya Nabi Salam Alayka",v5:"L'Histoire de Makkah | Récits Historiques",v6:"Leçon Tajwid 5 | Apprendre le Coran",trending:"Tendance Maintenant 🔥",foryou:"✨ Pour Vous / Recommandé",playlist:"Playlist - Série Sirah",playlist2:"Série Sirah - 30 Vidéos",playlist3:"L'une après l'autre, ne s'arrêtera pas",playall:"Tout Lire",contactTitle:"📞 Contactez-nous - Deen Plus Officiel",channels:"+ Chaînes à Suivre",library:"♡ Ma Bibliothèque",watchlater:"♡ Regarder Plus Tard",liked:"♡ Vidéos Aimées",yourvideos:"♡ Vos Vidéos",noti:"🔔 Notifications",noti1:"Nouveau: Sirah Mustafa Ep.2 en direct",noti2:"Al-Huda a mis en ligne un nouveau bayan",footerDesc:"Plateforme fiable pour vidéos éducatives islamiques.",tagline:"Parole de Deen, Jusqu'au Cœur",company:"Entreprise",about:"À Propos",careers:"Carrières",press:"Presse",legal:"Légal",privacy:"Politique de Confidentialité",terms:"Termes et Conditions",copyright:"Droits d'Auteur",support:"Support",contact:"Contact",feedback:"Retour"},
+es:{search:"Buscar Bayan, Naat, Corán...",signin:"Iniciar Sesión",upload:"⬆ Subir",all:"Todo",seerat:"Sirah Mustafa",quran:"Recitación del Corán",naat:"Naat",bayan:"Bayan Islámico",waqiat:"Relatos",mp3:"Corán MP3",kids:"Islámico Niños",makkah:"Makkah En Vivo ●",madina:"Medina En Vivo ●",heroTitle:"Sirah Mustafa (SAW) - Serie Completa",heroMeta:"Episodio 1 • 2.1M vistas • En vivo • Hace 3 días",v1:"La Misericordia del Profeta Muhammad (SAW)",v2:"Surah Al-Mulk | Hermosa Recitación",v3:"Historia del Profeta Adam para Niños",v4:"Naat - Ya Nabi Salam Alayka",v5:"Historia de Makkah | Relatos Históricos",v6:"Lección Tajwid 5 | Aprender Corán",trending:"Tendencia Ahora 🔥",foryou:"✨ Para Ti / Recomendado",playlist:"Lista - Serie Sirah",playlist2:"Serie Sirah - 30 Videos",playlist3:"Uno tras otro, no parará",playall:"Reproducir Todo",contactTitle:"📞 Contáctanos - Deen Plus Oficial",channels:"+ Canales para Seguir",library:"♡ Mi Biblioteca",watchlater:"♡ Ver Más Tarde",liked:"♡ Videos que Me Gustan",yourvideos:"♡ Tus Videos",noti:"🔔 Notificaciones",noti1:"Nuevo: Sirah Mustafa Ep.2 en vivo",noti2:"Al-Huda subió un nuevo bayan",footerDesc:"Plataforma confiable para videos educativos islámicos.",tagline:"Palabra de Deen, Hasta el Corazón",company:"Empresa",about:"Acerca de",careers:"Carreras",press:"Prensa",legal:"Legal",privacy:"Política de Privacidad",terms:"Términos y Condiciones",copyright:"Derechos de Autor",support:"Soporte",contact:"Contacto",feedback:"Comentarios"},
+de:{search:"Bayan, Naat, Koran Suchen...",signin:"Anmelden",upload:"⬆ Hochladen",all:"Alle",seerat:"Sirah Mustafa",quran:"Koran Rezitation",naat:"Naat",bayan:"Islamischer Beyan",waqiat:"Geschichten",mp3:"Koran MP3",kids:"Islamisch Kinder",makkah:"Makkah Live ●",madina:"Madinah Live ●",heroTitle:"Sirah Mustafa (SAW) - Komplette Serie",heroMeta:"Folge 1 • 2.1M Aufrufe • Live • Vor 3 Tagen",v1:"Die Barmherzigkeit des Propheten Muhammad (SAW)",v2:"Surah Al-Mulk | Schöne Koran Rezitation",v3:"Prophet Adam Geschichte für Kinder",v4:"Naat - Ya Nabi Salam Alayka",v5:"Die Geschichte von Makkah",v6:"Tajwid Lektion 5 | Koran Richtig Lernen",trending:"Jetzt Trend 🔥",foryou:"✨ Für Dich / Empfohlen",playlist:"Playlist - Sirah Serie",playlist2:"Sirah Serie - 30 Videos",playlist3:"Eins nach dem anderen, hört nicht auf",playall:"Alle Abspielen",contactTitle:"📞 Kontaktiere Uns - Deen Plus Offiziell",channels:"+ Kanäle zum Folgen",library:"♡ Meine Bibliothek",watchlater:"♡ Später Ansehen",liked:"♡ Gelikte Videos",yourvideos:"♡ Deine Videos",noti:"🔔 Benachrichtigungen",noti1:"Neu: Sirah Mustafa Folge 2 jetzt live",noti2:"Al-Huda hat neuen Beyan hochgeladen",footerDesc:"Vertrauenswürdige Plattform für islamische Bildungsvideos.",tagline:"Wort des Deen, Bis zum Herzen",company:"Firma",about:"Über Uns",careers:"Karriere",press:"Presse",legal:"Rechtlich",privacy:"Datenschutz",terms:"AGB",copyright:"Urheberrecht",support:"Support",contact:"Kontakt",feedback:"Feedback"},
+it:{search:"Cerca Bayan, Naat, Corano...",signin:"Accedi",upload:"⬆ Carica",all:"Tutti",seerat:"Sirah Mustafa",quran:"Recitazione Corano",naat:"Naat",bayan:"Bayan Islamico",waqiat:"Racconti",mp3:"Corano MP3",kids:"Islamico Bambini",makkah:"Makkah Live ●",madina:"Madina Live ●",heroTitle:"Sirah Mustafa (SAW) - Serie Completa",heroMeta:"Episodio 1 • 2.1M visualizzazioni • Live • 3 giorni fa",v1:"La Misericordia del Profeta Muhammad (SAW)",v2:"Surah Al-Mulk | Bella Recitazione",v3:"Storia del Profeta Adam per Bambini",v4:"Naat - Ya Nabi Salam Alayka",v5:"Storia di Makkah | Racconti Storici",v6:"Lezione Tajwid 5 | Impara Corano",trending:"Di Tendenza Ora 🔥",foryou:"✨ Per Te / Consigliati",playlist:"Playlist - Serie Sirah",playlist2:"Serie Sirah - 30 Video",playlist3:"Uno dopo l'altro, non si fermerà",playall:"Riproduci Tutto",contactTitle:"📞 Contattaci - Deen Plus Ufficiale",channels:"+ Canali da Seguire",library:"♡ La Mia Libreria",watchlater:"♡ Guarda Dopo",liked:"♡ Video Piaciuti",yourvideos:"♡ I Tuoi Video",noti:"🔔 Notifiche",noti1:"Nuovo: Sirah Mustafa Ep.2 ora live",noti2:"Al-Huda ha caricato nuovo bayan",footerDesc:"Piattaforma affidabile per video educativi islamici.",tagline:"Parola di Deen, Fino al Cuore",company:"Azienda",about:"Chi Siamo",careers:"Carriere",press:"Stampa",legal:"Legale",privacy:"Privacy",terms:"Termini e Condizioni",copyright:"Copyright",support:"Supporto",contact:"Contatto",feedback:"Feedback"},
+pt:{search:"Pesquisar Bayan, Naat, Alcorão...",signin:"Entrar",upload:"⬆ Enviar",all:"Todos",seerat:"Sirah Mustafa",quran:"Recitação do Alcorão",naat:"Naat",bayan:"Bayan Islâmico",waqiat:"Relatos",mp3:"Alcorão MP3",kids:"Islâmico Crianças",makkah:"Makkah Ao Vivo ●",madina:"Medina Ao Vivo ●",heroTitle:"Sirah Mustafa (SAW) - Série Completa",heroMeta:"Episódio 1 • 2.1M visualizações • Ao vivo • Há 3 dias",v1:"A Misericórdia do Profeta Muhammad (SAW)",v2:"Surah Al-Mulk | Bela Recitação",v3:"História do Profeta Adam para Crianças",v4:"Naat - Ya Nabi Salam Alayka",v5:"História de Makkah | Relatos Históricos",v6:"Lição Tajwid 5 | Aprender Alcorão",trending:"Em Alta Agora 🔥",foryou:"✨ Para Você / Recomendado",playlist:"Playlist - Série Sirah",playlist2:"Série Sirah - 30 Vídeos",playlist3:"Um após outro, não vai parar",playall:"Reproduzir Tudo",contactTitle:"📞 Fale Conosco - Deen Plus Oficial",channels:"+ Canais para Seguir",library:"♡ Minha Biblioteca",watchlater:"♡ Assistir Depois",liked:"♡ Vídeos Curtidos",yourvideos:"♡ Seus Vídeos",noti:"🔔 Notificações",noti1:"Novo: Sirah Mustafa Ep.2 ao vivo",noti2:"Al-Huda enviou novo bayan",footerDesc:"Plataforma confiável para vídeos educativos islâmicos.",tagline:"Palavra de Deen, Até o Coração",company:"Empresa",about:"Sobre",careers:"Carreiras",press:"Imprensa",legal:"Legal",privacy:"Política de Privacidade",terms:"Termos e Condições",copyright:"Direitos Autorais",support:"Suporte",contact:"Contato",feedback:"Feedback"},
+ru:{search:"Найти Баян, Наат, Коран...",signin:"Войти",upload:"⬆ Загрузить",all:"Все",seerat:"Сира Мустафа",quran:"Чтение Корана",naat:"Наат",bayan:"Исламский Баян",waqiat:"Истории",mp3:"Коран MP3",kids:"Исламский Детям",makkah:"Мекка Прямой Эфир ●",madina:"Медина Прямой Эфир ●",heroTitle:"Сира Мустафа (САВ) - Полная Серия",heroMeta:"Эпизод 1 • 2.1M просмотров • Прямой эфир • 3 дня назад",v1:"Милость Пророка Мухаммада (САВ)",v2:"Сура Аль-Мульк | Красивое Чтение",v3:"История Пророка Адама для Детей",v4:"Наат - Я Наби Салам Алейка",v5:"История Мекки | Исторические События",v6:"Урок Таджвид 5 | Учить Коран",trending:"Сейчас в Тренде 🔥",foryou:"✨ Для Вас / Рекомендовано",playlist:"Плейлист - Серия Сира",playlist2:"Серия Сира - 30 Видео",playlist3:"Одно за другим, не остановится",playall:"Смотреть Все",contactTitle:"📞 Свяжитесь с Нами - Deen Plus Официальный",channels:"+ Каналы для Подписки",library:"♡ Моя Библиотека",watchlater:"♡ Смотреть Позже",liked:"♡ Понравившиеся Видео",yourvideos:"♡ Ваши Видео",noti:"🔔 Уведомления",noti1:"Новое: Сира Мустафа Эп.2 в эфире",noti2:"Аль-Худа загрузил новый баян",footerDesc:"Надежная платформа для исламских образовательных видео.",tagline:"Слово Дина, До Сердца",company:"Компания",about:"О Нас",careers:"Карьера",press:"Пресса",legal:"Правовое",privacy:"Политика Конфиденциальности",terms:"Условия",copyright:"Авторское Право",support:"Поддержка",contact:"Контакт",feedback:"Отзыв"},
+zh:{search:"搜索 Bayan, Naat, 古兰经...",signin:"登录",upload:"⬆ 上传",all:"全部",seerat:"穆斯塔法传记",quran:"古兰经诵读",naat:"纳特",bayan:"伊斯兰演讲",waqiat:"事迹",mp3:"古兰经 MP3",kids:"儿童伊斯兰",makkah:"麦加直播 ●",madina:"麦地那直播 ●",heroTitle:"穆斯塔法传记 (SAW) - 完整系列",heroMeta:"第1集 • 210万观看 • 直播 • 3天前",v1:"先知穆罕默德的仁慈 | 伊斯兰演讲",v2:"国权章 | 优美古兰经诵读",v3:"阿丹先知故事 儿童版",v4:"纳特 - 先知啊 祝你平安",v5:"麦加的故事 | 历史事迹",v6:"塔吉威德课程 5 | 正确学习古兰经",trending:"现在热门 🔥",foryou:"✨ 为你推荐",playlist:"播放列表 - 传记系列",playlist2:"传记系列 - 30个视频",playlist3:"一个接一个, 不会停",playall:"全部播放",contactTitle:"📞 联系我们 - Deen Plus 官方",channels:"+ 关注频道",library:"♡ 我的图书馆",watchlater:"♡ 稍后观看",liked:"♡ 喜欢的视频",yourvideos:"♡ 你的视频",noti:"🔔 通知",noti1:"新: 穆斯塔法传记 第2集 直播中",noti2:"Al-Huda 上传了新演讲",footerDesc:"值得信赖的伊斯兰教育视频平台。",tagline:"信仰之言, 直达人心",company:"公司",about:"关于我们",careers:"职业",press:"新闻",legal:"法律",privacy:"隐私政策",terms:"条款",copyright:"版权",support:"支持",contact:"联系",feedback:"反馈"},
+ja:{search:"バヤン、ナート、クルアーンを検索...",signin:"サインイン",upload:"⬆ アップロード",all:"すべて",seerat:"シーラ・ムスタファ",quran:"クルアーン朗読",naat:"ナート",bayan:"イスラム講演",waqiat:"物語",mp3:"クルアーン MP3",kids:"子どもイスラム",makkah:"マッカ ライブ ●",madina:"マディーナ ライブ ●",heroTitle:"シーラ・ムスタファ (SAW) - 全シリーズ",heroMeta:"エピソード1 • 210万回視聴 • ライブ • 3日前",v1:"預言者ムハンマドの慈悲 | イスラム講演",v2:"アル・ムルク章 | 美しいクルアーン朗読",v3:"アダム預言者の物語 子ども向け",v4:"ナート - ヤー・ナビ・サラーム",v5:"マッカの物語 | 歴史物語",v6:"タジュウィード レッスン5 | クルアーンを学ぶ",trending:"今トレンド 🔥",foryou:"✨ あなたへ / おすすめ",playlist:"プレイリスト - シーラ シリーズ",playlist2:"シーラ シリーズ - 30本",playlist3:"次々と、止まらない",playall:"すべて再生",contactTitle:"📞 お問い合わせ - Deen Plus 公式",channels:"+ フォローするチャンネル",library:"♡ マイライブラリ",watchlater:"♡ 後で見る",liked:"♡ 高評価動画",yourvideos:"♡ あなたの動画",noti:"🔔 通知",noti1:"新着: シーラ・ムスタファ Ep.2 ライブ中",noti2:"Al-Huda が新しい講演をアップロード",footerDesc:"イスラム教育動画の信頼できるプラットフォーム。",tagline:"ディーンの言葉、心まで",company:"会社",about:"私たちについて",careers:"キャリア",press:"プレス",legal:"法務",privacy:"プライバシーポリシー",terms:"利用規約",copyright:"著作権",support:"サポート",contact:"連絡先",feedback:"フィードバック"},
+ko:{search:"Bayan, Naat, 꾸란 검색...",signin:"로그인",upload:"⬆ 업로드",all:"전체",seerat:"무스타파 전기",quran:"꾸란 낭송",naat:"나트",bayan:"이슬람 강연",waqiat:"이야기",mp3:"꾸란 MP3",kids:"어린이 이슬람",makkah:"메카 라이브 ●",madina:"메디나 라이브 ●",heroTitle:"무스타파 전기 (SAW) - 전체 시리즈",heroMeta:"에피소드 1 • 210만 조회 • 라이브 • 3일 전",v1:"예언자 무함마드의 자비 | 이슬람 강연",v2:"알물크 장 | 아름다운 꾸란 낭송",v3:"아담 예언자 이야기 어린이용",v4:"나트 - 야 나비 살람 알라이카",v5:"메카 이야기 | 역사 이야기",v6:"타즈위드 수업 5 | 꾸란 배우기",trending:"지금 인기 🔥",foryou:"✨ 당신을 위해 / 추천",playlist:"재생목록 - 전기 시리즈",playlist2:"전기 시리즈 - 30개 영상",playlist3:"하나씩, 멈추지 않아요",playall:"모두 재생",contactTitle:"📞 문의하기 - Deen Plus 공식",channels:"+ 팔로우할 채널",library:"♡ 내 라이브러리",watchlater:"♡ 나중에 보기",liked:"♡ 좋아요한 영상",yourvideos:"♡ 내 영상",noti:"🔔 알림",noti1:"신규: 무스타파 전기 Ep.2 라이브 중",noti2:"Al-Huda 새 강연 업로드",footerDesc:"이슬람 교육 영상을 위한 신뢰할 수 있는 플랫폼.",tagline:"딘의 말, 마음까지",company:"회사",about:"소개",careers:"채용",press:"언론",legal:"법률",privacy:"개인정보처리방침",terms:"이용약관",copyright:"저작권",support:"지원",contact:"연락처",feedback:"피드백"},
+pa:{search:"ਬਿਆਨ, ਨਾਤ, ਕੁਰਾਨ ਲੱਭੋ...",signin:"ਸਾਈਨ ਇਨ",upload:"⬆ ਅੱਪਲੋਡ",all:"ਸਭ",seerat:"ਸੀਰਤ ਮੁਸਤਫ਼ਾ",quran:"ਕੁਰਾਨ ਤਿਲਾਵਤ",naat:"ਨਾਤ",bayan:"ਇਸਲਾਮੀ ਬਿਆਨ",waqiat:"ਵਾਕਿਆਤ",mp3:"ਕੁਰਾਨ MP3",kids:"ਬੱਚਿਆਂ ਦਾ ਇਸਲਾਮੀ",makkah:"ਮੱਕਾ ਲਾਈਵ ●",madina:"ਮਦੀਨਾ ਲਾਈਵ ●",heroTitle:"ਸੀਰਤ ਮੁਸਤਫ਼ਾ (SAW) - ਪੂਰੀ ਸੀਰੀਜ਼",heroMeta:"ਐਪੀਸੋਡ 1 • 2.1M ਵਿਊ • ਲਾਈਵ • 3 ਦਿਨ ਪਹਿਲਾਂ",v1:"ਹਜ਼ੂਰ ﷺ ਦੀ ਰਹਿਮਤ | ਇਸਲਾਮੀ ਬਿਆਨ",v2:"ਸੂਰਹ ਅਲ-ਮੁਲਕ | ਸੋਹਣੀ ਤਿਲਾਵਤ",v3:"ਹਜ਼ਰਤ ਆਦਮ ਦੀ ਕਹਾਣੀ ਬੱਚਿਆਂ ਲਈ",v4:"ਨਾਤ - ਯਾ ਨਬੀ ਸਲਾਮ ਅਲੈਕਾ",v5:"ਮੱਕੇ ਦੀ ਕਹਾਣੀ | ਇਤਿਹਾਸਕ ਵਾਕਿਆਤ",v6:"ਤਜਵੀਦ ਸਬਕ 5 | ਕੁਰਾਨ ਸਹੀ ਸਿੱਖੋ",trending:"ਟ੍ਰੈਂਡਿੰਗ ਹੁਣ 🔥",foryou:"✨ ਤੁਹਾਡੇ ਲਈ / ਸਿਫਾਰਸ਼",playlist:"ਪਲੇਲਿਸਟ - ਸੀਰਤ ਸੀਰੀਜ਼",playlist2:"ਸੀਰਤ ਸੀਰੀਜ਼ - 30 ਵੀਡੀਓ",playlist3:"ਇੱਕ ਤੋਂ ਬਾਅਦ ਇੱਕ, ਰੁਕੇਗੀ ਨਹੀਂ",playall:"ਸਭ ਚਲਾਓ",contactTitle:"📞 ਸਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੋ - ਦੀਨ ਪਲੱਸ ਅਫੀਸ਼ਲ",channels:"+ ਫਾਲੋ ਕਰਨ ਵਾਲੇ ਚੈਨਲ",library:"♡ ਮੇਰੀ ਲਾਇਬ੍ਰੇਰੀ",watchlater:"♡ ਬਾਅਦ ਵਿੱਚ ਵੇਖੋ",liked:"♡ ਪਸੰਦ ਵੀਡੀਓ",yourvideos:"♡ ਤੁਹਾਡੇ ਵੀਡੀਓ",noti:"🔔 ਨੋਟੀਫਿਕੇਸ਼ਨ",noti1:"ਨਵਾਂ: ਸੀਰਤ ਮੁਸਤਫ਼ਾ Ep.2 ਹੁਣ ਲਾਈਵ",noti2:"ਅਲ-ਹੁਦਾ ਨੇ ਨਵਾਂ ਬਿਆਨ ਅੱਪਲੋਡ ਕੀਤਾ",footerDesc:"ਇਸਲਾਮੀ ਵਿਦਿਅਕ ਵੀਡੀਓ ਦਾ ਭਰੋਸੇਮੰਦ ਪਲੇਟਫਾਰਮ।",tagline:"ਦੀਨ ਦੀ ਗੱਲ, ਦਿਲ ਤੱਕ",company:"ਕੰਪਨੀ",about:"ਸਾਡੇ ਬਾਰੇ",careers:"ਨੌਕਰੀਆਂ",press:"ਪ੍ਰੈਸ",legal:"ਕਾਨੂੰਨੀ",privacy:"ਗੋਪਨੀਯਤਾ ਨੀਤੀ",terms:"ਸ਼ਰਤਾਂ",copyright:"ਕਾਪੀਰਾਈਟ",support:"ਮਦਦ",contact:"ਸੰਪਰਕ",feedback:"ਰਾਏ"},
+ps:{search:"بیان، نعت، قران لټول...",signin:"ننوتل",upload:"⬆ پورته کول",all:"ټول",seerat:"سیرت مصطفی",quran:"د قران تلاوت",naat:"نعت",bayan:"اسلامي بیان",waqiat:"واقعات",mp3:"قران MP3",kids:"د ماشومانو اسلامي",makkah:"مکه ژوندۍ ●",madina:"مدینه ژوندۍ ●",heroTitle:"سیرت مصطفی ﷺ - بشپړه لړۍ",heroMeta:"برخه 1 • 2.1M لیدل • ژوندۍ • 3 ورځې وړاندې",v1:"د حضرت محمد ﷺ رحمت | اسلامي بیان",v2:"سوره الملک | ښکلی تلاوت",v3:"د حضرت ادم کیسه ماشومانو لپاره",v4:"نعت - یا نبي سلام علیک",v5:"د مکې کیسه | تاریخي واقعات",v6:"د تجوید درس 5 | قران سم زده کړه",trending:"اوس ټرینډینګ 🔥",foryou:"✨ ستا لپاره / وړاندیز شوی",playlist:"پلی لیست - سیرت لړۍ",playlist2:"سیرت لړۍ - 30 ویډیوګانې",playlist3:"یو په بل پسې, به نه دریږي",playall:"ټول چلول",contactTitle:"📞 موږ سره اړیکه - دین پلس رسمي",channels:"+ تعقیبونکي چینلونه",library:"♡ زما کتابتون",watchlater:"♡ وروسته وګوره",liked:"♡ خوښې ویډیوګانې",yourvideos:"♡ ستا ویډیوګانې",noti:"🔔 خبرتیاوې",noti1:"نوی: سیرت مصطفی Ep.2 اوس ژوندۍ ده",noti2:"الحُدیٰ نوی بیان پورته کړ",footerDesc:"د اسلامي زده کړې ویډیوګانو باوري پلیټ فارم۔",tagline:"د دین خبره, تر زړه پورې",company:"شرکت",about:"زموږ په اړه",careers:"دندې",press:"مطبوعات",legal:"قانوني",privacy:"د محرمیت پالیسي",terms:"شرایط",copyright:"کاپي رایټ",support:"ملاتړ",contact:"اړیکه",feedback:"نظر"}
+};
+function toggleLang(){document.getElementById('langMenu').classList.toggle('open')}
+function setLang(lang){
+  localStorage.setItem('deen_lang',lang);
+  const t=translations[lang]||translations['en'];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{let k=el.getAttribute('data-i18n'); if(t[k]) el.innerText=t[k]});
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{let k=el.getAttribute('data-i18n-ph'); if(t[k]) el.placeholder=t[k]});
+  document.getElementById('htmlTag').lang=lang;
+  document.getElementById('htmlTag').dir=(lang==='ur'||lang==='fa'||lang==='ar'||lang==='ps')?'rtl':'ltr';
+  let names={en:'🌐 English ▼',ur:'🌐 اردو ▼',hi:'🌐 हिंदी ▼',bn:'🌐 বাংলা ▼',ar:'🌐 العربية ▼',fa:'🌐 فارسی ▼',tr:'🌐 Türkçe ▼',id:'🌐 Indonesia ▼',ms:'🌐 Melayu ▼',fr:'🌐 Français ▼',es:'🌐 Español ▼',de:'🌐 Deutsch ▼',it:'🌐 Italiano ▼',pt:'🌐 Português ▼',ru:'🌐 Русский ▼',zh:'🌐 中文 ▼',ja:'🌐 日本語 ▼',ko:'🌐 한국어 ▼',pa:'🌐 ਪੰਜਾਬੀ ▼',ps:'🌐 پشتو ▼'};
+  document.getElementById('langBtn').innerText=names[lang]||'🌐 English ▼';
+  document.querySelectorAll('.lang-menu button').forEach(b=>b.classList.remove('active'));
+  let btn=document.getElementById('btn-'+lang); if(btn) btn.classList.add('active');
+  document.getElementById('langMenu').classList.remove('open');
+}
+document.addEventListener('click',e=>{if(!e.target.closest('.lang-wrap')) document.getElementById('langMenu').classList.remove('open')});
+let saved=localStorage.getItem('deen_lang')||'en'; if(saved!=='en') setLang(saved);
+function filterCat(el,cat){document.querySelectorAll('.cat').forEach(c=>c.classList.remove('active'));el.classList.add('active');if(cat==='Live'){alert('Makkah Live / Madina Live - LIVE');}else{doSearch(cat==='All'?'':cat)}}
+function doSearch(q){q=q.toLowerCase();document.querySelectorAll('.video-item').forEach(v=>{v.style.display=v.dataset.title.toLowerCase().includes(q)?'block':'none'})}
+function playVideo(t,m){document.getElementById('vTitle').innerText=t;document.getElementById('vMeta').innerText=m;document.getElementById('videoModal').classList.add('open')}
+function closeVideo(){document.getElementById('videoModal').classList.remove('open')}
+function toggleSub(b){if(b.innerText==='Subscribe'){b.innerText='Subscribed ✓';b.classList.add('done')}else{b.innerText='Subscribe';b.classList.remove('done')}}
+function like(b){b.innerText='❤️ Liked ✓'}
+function addComment(){let v=document.getElementById('cInput').value;if(!v) return;let d=document.createElement('div');d.innerText='You: '+v;d.style.padding='8px';d.style.background='#f0f7f2';d.style.borderRadius='8px';d.style.marginBottom='6px';document.getElementById('comments').prepend(d);document.getElementById('cInput').value=''}
+function openPage(name){
+ let c=document.getElementById('pageContent');
+ if(name==='privacy') c.innerHTML='<h2>Privacy Policy - Deen Plus Official</h2><p>We do not sell your data.</p><p><b>Contact:</b> deenplusofficial786@gmail.com | WhatsApp: 0311-2314531</p>';
+ else if(name==='terms') c.innerHTML='<h2>Terms & Conditions - Deen Plus Official</h2><p>Only Islamic educational content is allowed.</p><p>Contact: deenplusofficial786@gmail.com</p>';
+ else if(name==='about') c.innerHTML='<h2>About Us - Deen Plus Official</h2><p><b>Deen Plus - Deen Ki Baat, Dil Tak</b></p><p>Seerat e Mustafa (SAW), Quran Recitation, Naat, Islami Bayan, Waqiat and Kids Islami videos.</p><p>Email: deenplusofficial786@gmail.com<br>WhatsApp: 0311-2314531<br>YouTube: https://youtube.com/@deenplusofficial<br>Address: Karachi, Pakistan</p>';
+ else if(name==='contact') c.innerHTML='<h2>Contact Us</h2><p><b>WhatsApp:</b> <a href=https://wa.me/923112314531 target=_blank>0311-2314531</a><br><b>Email:</b> <a href=mailto:deenplusofficial786@gmail.com>deenplusofficial786@gmail.com</a><br><b>YouTube:</b> <a href=https://youtube.com/@deenplusofficial?si=QPkKUlSC-HSJIfHU target=_blank>Deen Plus YouTube Channel</a></p>';
+ else if(name==='signin') c.innerHTML='<h2>Sign In</h2><input placeholder="Email" style="width:100%;padding:12px;margin:8px 0"><input placeholder="Password" type="password" style="width:100%;padding:12px;margin:8px 0"><br><button class="btn-green" onclick="alert(\'Signed In!\')">Sign In</button>';
+ else if(name==='upload') c.innerHTML='<h2>Upload Video</h2><input placeholder="Video Title" style="width:100%;padding:12px;margin:8px 0"><select style="width:100%;padding:12px"><option>Seerat e Mustafa</option><option>Quran Recitation</option><option>Naat</option><option>Islami Bayan</option><option>Kids Islami</option></select><br><br><input type="file"><br><br><button class="btn-green" onclick="alert(\'Upload Started!\')">Upload</button>';
+ document.getElementById('pageBox').classList.add('open');
+}
+function closePage(){document.getElementById('pageBox').classList.remove('open')}
+</script>
+</body>
+</html>
