@@ -1,1 +1,136 @@
 
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deen Plus - Deen Ki Baat, Dil Tak</title>
+<style>
+*{box-sizing:border-box} body{margin:0;background:#03231b;color:#fff;font-family:system-ui}
+a{color:#e9c67b;text-decoration:none}
+/* DAILYMOTION STYLE TOP */
+.topbar{display:flex;align-items:center;gap:12px;padding:10px 14px;background:#03231b;border-bottom:1px solid #e9c67b50;position:sticky;top:0;z-index:500}
+.logo{width:58px;height:58px;border-radius:50%;border:3px solid #e9c67b;object-fit:cover;background:#000;flex-shrink:0}
+.search{flex:1;display:flex;align-items:center;gap:8px;background:#0a3a2e;border:1.5px solid #e9c67b;border-radius:30px;padding:10px 14px}
+.search input{flex:1;background:transparent;border:none;outline:none;color:#fff;font-size:14px}
+.top-links{display:none;gap:14px;font-size:13px}
+@media(min-width:700px){.top-links{display:flex}}
+.sign{border:1.5px solid #e9c67b;border-radius:20px;padding:7px 14px;font-size:13px;white-space:nowrap}
+/* CATEGORY PATTI - DAILYMOTION */
+.cats{display:flex;gap:8px;overflow-x:auto;padding:10px 12px;background:#042e23;position:sticky;top:78px;z-index:400;white-space:nowrap;scrollbar-width:none}
+.cats b{padding:9px 16px;border:1.5px solid #e9c67b;border-radius:22px;cursor:pointer;font-size:13px;opacity:.6;flex-shrink:0}
+.cats b.active{background:#e9c67b;color:#03231b;opacity:1}
+/* HERO - AAP WALI TASVEER JESA */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:22px 5%;align-items:center}
+@media(max-width:700px){.hero{grid-template-columns:1fr}}
+.hero h1{color:#e9c67b;font-size:38px;line-height:1.2;margin:0}
+@media(max-width:700px){.hero h1{font-size:30px}}
+.btn-gold{background:#e9c67b;color:#03231b;padding:11px 22px;border-radius:8px;font-weight:bold;border:none;cursor:pointer}
+.btn-line{background:transparent;color:#e9c67b;padding:11px 22px;border-radius:8px;border:1.5px solid #e9c67b;cursor:pointer}
+.pill{border:1px solid #e9c67b;border-radius:20px;padding:5px 10px;font-size:11px}
+.hero-img{position:relative;border-radius:14px;overflow:hidden;border:2px solid #e9c67b50}
+.hero-img img{width:100%;height:280px;object-fit:cover;display:block}
+.live{position:absolute;top:12px;left:12px;background:#d33;color:#fff;padding:4px 10px;border-radius:20px;font-size:12px}
+.hero-img div{position:absolute;bottom:0;left:0;right:0;padding:14px;background:linear-gradient(transparent,#000)}
+/* SECTIONS */
+h2{text-align:center;color:#e9c67b;font-size:26px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:12px 5%}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.card{background:#0a3a2e;border:1.5px solid #e9c67b60;border-radius:14px;overflow:hidden;text-align:center;padding-bottom:14px}
+.card img{width:100%;height:150px;object-fit:cover}
+.card b{color:#e9c67b;font-size:16px;display:block;margin-top:8px}
+.card p{font-size:13px;opacity:.8;padding:0 10px;line-height:1.6}
+.quran-box{background:#0a3a2e;border:1.5px solid #e9c67b;border-radius:14px;margin:12px 5%;padding:16px;text-align:center}
+footer{text-align:center;padding:18px;border-top:1px solid #e9c67b30;color:#e9c67b;font-size:12px}
+#mp3Bar{position:fixed;bottom:0;left:0;right:0;background:#000;border-top:2px solid #e9c67b;padding:8px 10px;display:flex;gap:8px;align-items:center;z-index:999}
+#mp3Bar audio{flex:1}
+</style>
+</head>
+<body>
+
+<!-- 1. DAILYMOTION TOP -->
+<div class="topbar">
+<img class="logo" src="logo.png" onerror="this.src='https://img.youtube.com/vi/33NKK8XChi0/hqdefault.jpg'">
+<div class="search">🔍 <input id="q" oninput="render()" placeholder="Search Quran, Bayan, Seerat..."></div>
+<div class="top-links"><a href="#">Home</a><a href="#">About</a><a href="#">Contact</a></div>
+<a class="sign" href="#">Sign In</a>
+</div>
+
+<!-- 2. CATEGORY -->
+<div class="cats" id="cats">
+<b class="active" onclick="setCat('all',this)">All</b>
+<b onclick="setCat('quran',this)">Quran MP3</b>
+<b onclick="setCat('seerat',this)">Seerat e Mustafa</b>
+<b onclick="setCat('waqiat',this)">Waqiat</b>
+<b onclick="setCat('bayan',this)">Islami Bayan</b>
+<b onclick="setCat('naat',this)">Naat</b>
+<b onclick="setCat('hadees',this)">Hadees</b>
+<b onclick="setCat('poster',this)">Poster</b>
+</div>
+
+<!-- 3. HERO - WOHI AAP WALA -->
+<div class="hero">
+<div>
+<h1>Watch Islamic Content Anytime</h1>
+<p style="color:#e9c67b">Quran Recitation • Islamic Lectures • Seerat • Waqiat</p>
+<p style="opacity:.8;font-size:14px;line-height:1.7">Learn, reflect, and strengthen your faith with authentic Islamic content — available anytime, anywhere.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn-gold" onclick="setCat('quran',null)">▶ Watch Now</button><button class="btn-line" onclick="setCat('all',null)">Explore Library</button></div>
+<br><div style="display:flex;gap:8px;flex-wrap:wrap"><span class="pill">• Live & On-Demand</span><span class="pill">• Free & Ad-free</span><span class="pill">• Trusted Scholars</span></div>
+</div>
+<div class="hero-img">
+<span class="live">● LIVE</span>
+<img src="https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=900&q=80">
+<div><b style="font-size:20px">Makkah Live</b><br>Masjid al-Haram</div>
+</div>
+</div>
+
+<!-- 4. EXPLORE -->
+<h2>Explore Our Content</h2>
+<div class="grid" id="market"></div>
+
+<!-- QURAN + HADEES BOX -->
+<div class="quran-box" id="quranBox">
+<h3 style="color:#e9c67b;margin:0">📖 آج کی آیت + حدیث</h3>
+<p style="font-size:20px;line-height:2">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+<p>انما الاعمال بالنیات - اعمال کا دارومدار نیتوں پر ہے</p>
+<button class="btn-gold" onclick="playMP3('Surah Rahman','https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">▶ تلاوت سنیں</button>
+</div>
+
+<footer>© 2024 Deen Plus • Deen Ki Baat, Dil Tak • Privacy • Terms • Follow us: YouTube | Instagram | Facebook<br>0311-2314531 | deenplusofficial@gmail.com</footer>
+
+<div id="mp3Bar"><b id="now" style="color:#e9c67b;font-size:12px">MP3 Player</b><audio id="aud" controls></audio></div>
+
+<script>
+const YT='https://img.youtube.com/vi/33NKK8XChi0/hqdefault.jpg';
+const data=[
+{cat:'quran',title:'Surah Yaseen MP3',desc:'مکمل تلاوت',demo:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',thumb:YT},
+{cat:'quran',title:'Surah Rahman MP3',desc:'دل کو سکون',demo:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',thumb:YT},
+{cat:'seerat',title:'Seerat e Mustafa (SAW)',desc:'Journey through the blessed life of Prophet Muhammad ﷺ',thumb:'https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=600&q=80'},
+{cat:'waqiat',title:'Waqiat',desc:'Inspiring historical Islamic stories & events',thumb:'https://images.unsplash.com/photo-1519791883288-dc8bd696e667?w=600&q=80'},
+{cat:'bayan',title:'Islami Bayan',desc:'Scholarly lectures for guidance & knowledge',thumb:'https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=600&q=80'},
+{cat:'naat',title:'Naat Sharif',desc:'Mustafa Jaan e Rehmat',demo:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3',thumb:YT},
+{cat:'hadees',title:'Roz Ki Hadees',desc:'Niyat wali hadees',thumb:YT},
+{cat:'poster',title:'Jumma Mubarak Poster',desc:'HD Poster Download',thumb:'https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=600&q=80'},
+];
+let cur='all';
+function setCat(c,el){
+cur=c; document.getElementById('q').value='';
+document.querySelectorAll('.cats b').forEach(b=>b.classList.remove('active'));
+if(el) el.classList.add('active');
+render();
+window.scrollTo({top:document.getElementById('market').offsetTop-130,behavior:'smooth'});
+}
+function render(){
+let m=document.getElementById('market'); m.innerHTML='';
+let q=document.getElementById('q').value.toLowerCase();
+let f=data.filter(v=>(cur==='all'||v.cat===cur)&&v.title.toLowerCase().includes(q));
+if(f.length===0) m.innerHTML='<p style="grid-column:1/3;text-align:center">کچھ نہیں ملا، All دبائیں</p>';
+f.forEach(v=>{
+m.innerHTML+=`<div class="card"><img src="${v.thumb}"><b>${v.title}</b><p>${v.desc}</p><button class="btn-gold" style="padding:8px 16px" onclick="playMP3('${v.title}','${v.demo||''}')">Watch Now →</button></div>`;
+});
+}
+function playMP3(t,f){if(!f) return; document.getElementById('now').innerText=t; let a=document.getElementById('aud'); a.src=f; a.play();}
+render();
+</script>
+</body>
+</html>
